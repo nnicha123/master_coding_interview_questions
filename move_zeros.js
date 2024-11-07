@@ -4,7 +4,10 @@ var moveZeroes = function (nums) {
 
   for (let pRight = 0; pRight < nums.length; pRight++) {
     if (nums[pRight] !== 0) {
-      [nums[pRight], nums[pLeft]] = [nums[pLeft], nums[pRight]];
+      if (pRight !== pLeft) {
+        // swap
+        [nums[pRight], nums[pLeft]] = [nums[pLeft], nums[pRight]];
+      }
       pLeft += 1;
     }
   }
@@ -17,4 +20,9 @@ var moveZeroes = function (nums) {
 // [1,3,12,0,0]
 
 console.log(moveZeroes([4, 2, 4, 0, 0, 3, 0, 5, 1, 0]));
+
+// [4, 2, 4, 0, 0, 3, 0, 5, 1, 0]
+// [4, 2, 4, 3, 0, 0, 0, 5, 1, 0]
+// [4, 2, 4, 3, 5, 0, 0, 0, 1, 0]
+// [4, 2, 4, 3, 5, 1, 0, 0, 0, 0]
 console.log(moveZeroes([2, 1]));
